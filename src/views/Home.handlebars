@@ -1,0 +1,24 @@
+<a href="/products/realtimeproducts" class="agregar">Agregar Productos</a>
+<div class="contendor">
+    <h1>Listado de productos</h1>
+    {{#if products.length}}
+        <div class="productos">
+            {{#each products}}
+                <div class="producto">
+                    <h2 class="titulo">{{this.title}}</h2>
+                    {{#each thumbnails}}
+                        {{#if main}}
+                            <img src={{this.path}}>
+                        {{/if}}
+                    {{/each}}
+                    <a href="/products/{{this.id}}"><button>Ver mas</button></a>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="no-products">
+            <p>No hay productos disponibles</p>
+            <a href="/products/realtimeproducts">Agregar Productos</a>
+        </div>
+    {{/if}}
+</div>

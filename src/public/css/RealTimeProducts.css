@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d3d3d3;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor h1{
+    margin: 0 0 20px;
+    font-size: 2em;
+    color: #fff;
+}
+
+.contenedor .formulario form{
+    background: linear-gradient(145deg, #a0a0a0, #787878);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+.contenedor .formulario form .inputbox{
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor .formulario form .inputbox-button{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contenedor .formulario form .inputbox label{
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.contenedor .formulario form .inputbox input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #d3d3d3;
+    color: #333;
+}
+
+.contenedor .formulario form .inputbox-button button{
+    width: 100%;
+    padding: 10px;
+    background-color: #0056b3;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .1s;
+}
+
+.contenedor .formulario form .inputbox-button button:hover{
+    background-color: #003f7f;
+}

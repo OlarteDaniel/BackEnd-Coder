@@ -1,0 +1,29 @@
+[
+	{
+		"title": "Mochila",
+		"description": "Es una simple mochila",
+		"code": "9429",
+		"price": "2500",
+		"status": true,
+		"stock": "10",
+		"category": "Mochia",
+		"thumbnails": [
+			{
+				"mimetype": "image/png",
+				"path": "/files/products/1718262617607-Mochila.png",
+				"main": true
+			},
+			{
+				"mimetype": "image/png",
+				"path": "/files/products/1718262617609-Mochila - copia.png",
+				"main": false
+			},
+			{
+				"mimetype": "image/png",
+				"path": "/files/products/1718262617611-Mochila - copia (2).png",
+				"main": false
+			}
+		],
+		"id": 1
+	}
+]

@@ -1,0 +1,49 @@
+<div class="contenedor">
+    <h1>Registrar Productos</h1>
+    <div class="formulario">
+        <Form action="/api/products" method="POST" enctype="multipart/form-data">
+            <div class="inputbox">
+                <label >Titulo</label>
+                <input type="text" name="title">
+            </div>
+
+            <div class="inputbox">
+                <label >Descripcion</label>
+                <input type="text" name="description">
+            </div>
+
+            <div class="inputbox">
+                <label >Codigo</label>
+                <input type="number" name="code">
+            </div>
+
+            <div class="inputbox">
+                <label >Precio</label>
+                <input type="number" name="price">
+            </div>
+
+            <div class="inputbox">
+                <label >Stock</label>
+                <input type="number" name="stock">
+            </div>
+
+            <div class="inputbox">
+                <label >Categoria</label>
+                <input type="text" name="category">
+            </div>
+
+            <div class="inputbox">
+                <label >Imagen</label>
+                <input type="file" name="thumbnail" multiple>
+            </div>
+
+            <div class="inputbox-button">
+                <button type="submit">Agregar</button>
+                <button type="reset">Borrar</button>
+            </div>
+        </Form>
+    </div>
+    <div class="productos">
+        
+    </div>
+</div>

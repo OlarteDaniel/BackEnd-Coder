@@ -1,0 +1,25 @@
+<div class="contenedor">
+        <div class="producto">
+            <div class="imagen">
+                <div class="principal">
+                    {{#each product.thumbnails}}
+                        {{#if main}}
+                            <img src="{{this.path}}" alt="{{../product.title}}">
+                        {{/if}}
+                    {{/each}}
+                </div>
+                <div class="secundarias">
+                    {{#each product.thumbnails}}
+                        <img src="{{this.path}}" alt="{{product.title}}">
+                    {{/each}}
+                </div>
+            </div>
+            <div class="informacion">
+                <h2>{{product.title}}</h2>
+                <p class="precio">$ {{product.price}}</p>
+                <p class="descripcion">{{product.description}}</p>
+                <p class="stock">Stock disponible: {{product.stock}}</p>
+                <button class="comprar">Comprar ahora</button>
+            </div>
+        </div>
+    </div>
