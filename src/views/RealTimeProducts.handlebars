@@ -1,7 +1,7 @@
 <div class="contenedor">
     <h1>Registrar Productos</h1>
     <div class="formulario">
-        <Form action="/api/products" method="POST" enctype="multipart/form-data">
+        <Form id="productForm" enctype="multipart/form-data">
             <div class="inputbox">
                 <label >Titulo</label>
                 <input type="text" name="title">
@@ -38,12 +38,15 @@
             </div>
 
             <div class="inputbox-button">
-                <button type="submit">Agregar</button>
+                <button type="submit" id="button-submit">Agregar</button>
                 <button type="reset">Borrar</button>
             </div>
         </Form>
     </div>
-    <div class="productos">
+    <div class="productos" id="productos">
         
     </div>
 </div>
+
+<script src="/socket.io/socket.io.js"></script>;
+<script src="/js/RealTimeProducts.js"></script>

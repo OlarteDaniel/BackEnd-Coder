@@ -6,9 +6,9 @@
             {{#each products}}
                 <div class="producto">
                     <h2 class="titulo">{{this.title}}</h2>
-                    {{#each thumbnails}}
+                    {{#each this.thumbnails}}
                         {{#if main}}
-                            <img src={{this.path}}>
+                            <img src="{{this.path}}" alt="{{../product.title}}">
                         {{/if}}
                     {{/each}}
                     <a href="/products/{{this.id}}"><button>Ver mas</button></a>

@@ -1,29 +1,70 @@
 [
 	{
-		"title": "Mochila",
-		"description": "Es una simple mochila",
-		"code": "9429",
-		"price": "2500",
+		"title": "a",
+		"description": "a",
+		"code": "1",
+		"price": "1",
 		"status": true,
-		"stock": "10",
-		"category": "Mochia",
+		"stock": "1",
+		"category": "1",
 		"thumbnails": [
 			{
 				"mimetype": "image/png",
-				"path": "/files/products/1718262617607-Mochila.png",
+				"path": "/files/products/1718314740873-Mochila.png",
 				"main": true
-			},
-			{
-				"mimetype": "image/png",
-				"path": "/files/products/1718262617609-Mochila - copia.png",
-				"main": false
-			},
-			{
-				"mimetype": "image/png",
-				"path": "/files/products/1718262617611-Mochila - copia (2).png",
-				"main": false
 			}
 		],
 		"id": 1
+	},
+	{
+		"title": "b",
+		"description": "b",
+		"code": "2",
+		"price": "2",
+		"status": true,
+		"stock": "2",
+		"category": "2",
+		"thumbnails": [
+			{
+				"mimetype": "image/png",
+				"path": "/files/products/1718314776629-Mochila.png",
+				"main": true
+			}
+		],
+		"id": 2
+	},
+	{
+		"title": "c",
+		"description": "c",
+		"code": "3",
+		"price": "3",
+		"status": true,
+		"stock": "3",
+		"category": "3",
+		"thumbnails": [
+			{
+				"mimetype": "image/png",
+				"path": "/files/products/1718314865656-Mochila.png",
+				"main": true
+			}
+		],
+		"id": 3
+	},
+	{
+		"title": "d",
+		"description": "d",
+		"code": "4",
+		"price": "4",
+		"status": true,
+		"stock": "4",
+		"category": "4",
+		"thumbnails": [
+			{
+				"mimetype": "image/png",
+				"path": "/files/products/1718314893596-Mochila.png",
+				"main": true
+			}
+		],
+		"id": 4
 	}
 ]

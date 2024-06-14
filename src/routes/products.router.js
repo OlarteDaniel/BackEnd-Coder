@@ -61,13 +61,10 @@ router.get('/:id',async (req,res) =>{
 router.post('/',uploader.array('thumbnail',3),async(req,res)=>{
     const product = req.body;
     product.thumbnails = [];
+
     if(!product.title || !product.description || !product.code || !product.category || !product.price){
         return res.status(400).send("Information missing");
     }
-
-    
-
-    console.log(product)
 
     for(let i=0;i<req.files.length;i++){
         product.thumbnails.push({mimetype:req.files[i].mimetype,path:`/files/products/${req.files[i].filename}`,main:i==0})
@@ -79,7 +76,9 @@ router.post('/',uploader.array('thumbnail',3),async(req,res)=>{
         return res.status(500).send({status:"error",error:"Couldn't create product"});
     }
 
+    // res.redirect('/products/realtimeproducts');
     res.send({status:"success",message:`product created with id: ${result}`});
+    
 })
 
 // METODO POST

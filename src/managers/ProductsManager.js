@@ -2,7 +2,6 @@ import fs from 'fs';
 
 import __dirname from '../utils.js';
 
-// const PATH = './src/db/products.json'
 const PATH = `${__dirname}/db/products.json`;
 
 class ProductsManager{
@@ -13,7 +12,7 @@ class ProductsManager{
 
     async init(){
         if(fs.existsSync(PATH)){
-            console.log("Archivo products.json encontrado");
+            // console.log("Archivo products.json encontrado");
         }else{
             try {
                 await fs.promises.writeFile(PATH,JSON.stringify([]))
