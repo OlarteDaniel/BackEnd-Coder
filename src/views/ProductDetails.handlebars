@@ -2,16 +2,25 @@
         <div class="producto">
             <div class="imagen">
                 <div class="principal">
-                    {{#each product.thumbnails}}
-                        {{#if main}}
-                            <img src="{{this.path}}" alt="{{../product.title}}">
-                        {{/if}}
-                    {{/each}}
+                    {{#if product.thumbnails.length}}
+                        {{#each product.thumbnails}}
+                            {{#if main}}
+                                <img src="{{this.path}}" alt="{{../product.title}}">
+                            {{/if}}
+                        {{/each}}
+                    {{else}}
+                        <img src="/files/products/ImagenDefault.jpg" alt="{{product.title}}">
+                    {{/if}}
                 </div>
+
                 <div class="secundarias">
-                    {{#each product.thumbnails}}
-                        <img src="{{this.path}}" alt="{{product.title}}">
-                    {{/each}}
+                    {{#if product.thumbnails.length}}
+                        {{#each product.thumbnails}}
+                            <img src="{{this.path}}" alt="{{product.title}}">
+                        {{/each}}
+                    {{else}}
+                        <img src="/files/products/ImagenDefault.jpg" alt="{{product.title}}">
+                    {{/if}}
                 </div>
             </div>
             <div class="informacion">

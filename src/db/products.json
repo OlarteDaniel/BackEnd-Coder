@@ -1,21 +1,21 @@
 [
 	{
 		"title": "Camiseta River plate",
-		"description": "Camiseta River plate",
-		"code": "912",
-		"price": "5000",
+		"description": "Campera Adidas de River Plate",
+		"code": "0912",
+		"price": "12000",
 		"status": true,
-		"stock": "50",
+		"stock": "100",
 		"category": "Camiseta",
 		"thumbnails": [
 			{
 				"mimetype": "image/png",
-				"path": "/files/products/1718431265938-Camiseta NÂ°2.png",
+				"path": "/files/products/1718434609076-Camiseta NÂ°2.png",
 				"main": true
 			},
 			{
 				"mimetype": "image/png",
-				"path": "/files/products/1718431265939-Camiseta NÂ°1.png",
+				"path": "/files/products/1718434609078-Camiseta NÂ°1.png",
 				"main": false
 			}
 		],
@@ -23,68 +23,62 @@
 	},
 	{
 		"title": "Campera River plate",
-		"description": "Campera River plate",
-		"code": "912",
-		"price": "5000",
+		"description": "Campera Adidas de River Plate",
+		"code": "0912",
+		"price": "12000",
 		"status": true,
-		"stock": "50",
+		"stock": "100",
 		"category": "Campera ",
 		"thumbnails": [
 			{
 				"mimetype": "image/png",
-				"path": "/files/products/1718431287270-Campera NÂ°3.png",
+				"path": "/files/products/1718434643012-Campera NÂ°3.png",
 				"main": true
 			},
 			{
 				"mimetype": "image/png",
-				"path": "/files/products/1718431287270-Campera NÂ°2.png",
+				"path": "/files/products/1718434643013-Campera NÂ°2.png",
 				"main": false
 			},
 			{
 				"mimetype": "image/png",
-				"path": "/files/products/1718431287271-Campera NÂ°1.png",
+				"path": "/files/products/1718434643016-Campera NÂ°1.png",
 				"main": false
 			}
 		],
 		"id": 2
 	},
 	{
-		"title": "Chomba River plate",
-		"description": "Chomba River plate",
-		"code": "912",
+		"title": "Chomba River Plate",
+		"description": "Chomba Adidas de River Plate",
+		"code": "0912",
 		"price": "5000",
 		"status": true,
-		"stock": "50",
-		"category": "Chomba ",
+		"stock": "100",
+		"category": "Chomba",
 		"thumbnails": [
 			{
 				"mimetype": "image/png",
-				"path": "/files/products/1718431313009-Chomba NÂ°2.png",
+				"path": "/files/products/1718434921400-Chomba NÂ°2.png",
 				"main": true
 			},
 			{
 				"mimetype": "image/png",
-				"path": "/files/products/1718431313014-Chomba NÂ°1.png",
+				"path": "/files/products/1718434921424-Chomba NÂ°1.png",
 				"main": false
 			}
 		],
 		"id": 3
 	},
 	{
-		"title": "Medias River plate",
-		"description": "Medias River plate",
-		"code": "912",
+		"title": "La séptima de boca",
+		"description": "La septima copa libertadores de Boca Juniors",
+		"code": "0912",
 		"price": "5000",
 		"status": true,
-		"stock": "50",
-		"category": "Medias ",
-		"thumbnails": [
-			{
-				"mimetype": "image/png",
-				"path": "/files/products/1718431420991-Medias River Plate.png",
-				"main": true
-			}
-		],
+		"stock": "100",
+		"category": "Copa Libertadores",
+		"thumbnails": [],
 		"id": 4
 	}
 ]
