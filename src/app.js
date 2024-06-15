@@ -30,10 +30,12 @@ const socketServer = new Server(server);
 
 socketServer.on('connection',(socketClient) => {
     console.log("Cliente Conectado");
+    socketServer.emit('productAdded');
 
     socketClient.on('addProduct', data =>{
         console.log(`Se agrego el producto con el id ${data}`);
         socketServer.emit('productAdded');
     })
 });
+
 
