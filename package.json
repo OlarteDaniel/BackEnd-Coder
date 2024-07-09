@@ -15,7 +15,5 @@
     "express": "^4.19.2",
     "mongoose": "^8.4.5",
     "mongoose-paginate-v2": "^1.8.2"
-  },
-  "devDependencies": {},
-  "description": ""
+  }
 }
