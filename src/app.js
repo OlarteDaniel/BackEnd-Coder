@@ -3,12 +3,15 @@ import handlebars from 'express-handlebars';
 import mongoose from 'mongoose';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
+import passport from 'passport';
 
 import __dirname from './utils.js';
 import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
 import sessionsRouter from './routes/sessions.router.js';
 import viewsRouter from './routes/views.router.js';
+import initializePassportConfig from './config/passport.config.js';
+
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -20,10 +23,6 @@ app.engine('handlebars',handlebars.engine());
 app.set('views',`${__dirname}/views`);
 app.set('view engine','handlebars');
 
-app.use(express.static(`${__dirname}/public`))
-app.use(express.json());
-app.use(express.urlencoded({extended:true}))
-
 app.use(session({
     secret:"CoderSecreto",
     resave:false,
@@ -33,6 +32,16 @@ app.use(session({
         ttl:60*60*24
     })
 }))
+
+app.use(express.static(`${__dirname}/public`))
+app.use(express.json());
+app.use(express.urlencoded({extended:true}))
+
+initializePassportConfig();
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 app.use('/',viewsRouter);
 

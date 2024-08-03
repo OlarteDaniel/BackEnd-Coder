@@ -18,5 +18,4 @@ registerForm.addEventListener('submit',evt =>{
             'Content-Type':'application/json'
         }
     });
-    console.log("first")
 })
