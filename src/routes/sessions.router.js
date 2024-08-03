@@ -20,11 +20,20 @@ sessionsRouter.post('/login',passportCall('login'),async(req,res)=>{
 
     const token = jwt.sign(sessionUser,'clavesecreta',{expiresIn:'1d'});
 
-    res.cookie('sid',token).send({status:"success",message:"logged in"});
+    return res.cookie('sid',token).send({status:"success",message:"logged in"});
 })
 
 sessionsRouter.get('/logout',async(req,res)=>{
     res.clearCookie('sid').redirect('/login');
+})
+
+sessionsRouter.get('/current',passportCall('current'),async (req,res)=>{
+
+    if(!req.user){
+        return res.status(401).send({ status: "Error", message: "Not logged in" });
+    }
+
+    res.send({status:"sucess",payload:req.user});
 })
 
 export default sessionsRouter;

@@ -6,7 +6,8 @@ export const passportCall = (strategy) =>{
             if(error) return next(error);
             
             if(!user){
-                return res.status(401).send({status:"error",error:info.message});
+                req.user = null;
+                return res.status(401).send({ status: "error", message: info.message });
             }
 
             req.user = user;

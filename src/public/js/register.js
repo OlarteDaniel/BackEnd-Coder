@@ -1,6 +1,6 @@
 const registerForm = document.getElementById('registerForm');
 
-registerForm.addEventListener('submit',evt =>{
+registerForm.addEventListener('submit',async evt =>{
     evt.preventDefault();
 
     const data = new FormData(registerForm);
@@ -11,11 +11,18 @@ registerForm.addEventListener('submit',evt =>{
         obj[key] = value;
     });
 
-    fetch('/api/sessions/register',{
-        method:'POST',
-        body:JSON.stringify(obj),
-        headers:{
-            'Content-Type':'application/json'
+    try {
+        const response = await fetch('/api/sessions/register',{
+            method:'POST',
+            body:JSON.stringify(obj),
+            headers:{
+                'Content-Type':'application/json'
+            }
+        });
+        if(response.ok == true){
+            window.location.href = '/login';
         }
-    });
+    } catch (error) {
+        console.log(error);
+    }
 })

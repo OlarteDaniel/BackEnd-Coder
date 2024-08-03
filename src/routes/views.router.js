@@ -1,5 +1,6 @@
 import { Router } from "express";
 import passport from "passport";
+import { passportCall } from "../middlewares/passportCall.js";
 
 const viewsRouter = Router();
 
@@ -23,17 +24,18 @@ viewsRouter.get('/login',(req,res)=>{
     })
 })
 
-viewsRouter.get('/profile',passport.authenticate('current',{session:false}),(req,res) =>{
+viewsRouter.get('/profile',passportCall('current'),(req,res) =>{
 
     if(!req.user){
         return res.redirect('/login');
     }
 
     res.render('Profile',{
-        title:'Profile',
+        title:"Perfil de usuario",
         css:'profile',
-        user: req.user
+        user:req.user
     })
+
 })
 
 export default viewsRouter
