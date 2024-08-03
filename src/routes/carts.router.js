@@ -40,21 +40,21 @@ router.get('/:id',async(req,res)=>{
 
 // METODO POST
 
-router.post('/',async(req,res)=>{
-    const newCart = {
-        products:[]
-    }
+// router.post('/',async(req,res)=>{
+//     const newCart = {
+//         products:[]
+//     }
 
-    const result = await cartsService.createCart(newCart);
+//     const result = await cartsService.createCart(newCart);
 
-    console.log(result);
+//     console.log(result);
 
-    if(!result){
-        return res.status(500).send({status:"error",error:"Couldn't create cart"});
-    }
+//     if(!result){
+//         return res.status(500).send({status:"error",error:"Couldn't create cart"});
+//     }
 
-    res.send({status:"success",message:"cart created"});
-})
+//     res.send({status:"success",message:"cart created"});
+// })
 
 // METODO POST
 
