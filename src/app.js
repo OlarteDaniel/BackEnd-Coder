@@ -1,9 +1,8 @@
 import express from 'express';
 import handlebars from 'express-handlebars';
 import mongoose from 'mongoose';
-import session from 'express-session';
-import MongoStore from 'connect-mongo';
 import passport from 'passport';
+import cookieParser from 'cookie-parser';
 
 import __dirname from './utils.js';
 import productsRouter from './routes/products.router.js';
@@ -23,25 +22,13 @@ app.engine('handlebars',handlebars.engine());
 app.set('views',`${__dirname}/views`);
 app.set('view engine','handlebars');
 
-app.use(session({
-    secret:"CoderSecreto",
-    resave:false,
-    saveUninitialized:false,
-    store:MongoStore.create({
-        mongoUrl:CONNECTION_STRING,
-        ttl:60*60*24
-    })
-}))
-
 app.use(express.static(`${__dirname}/public`))
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
+app.use(cookieParser());
 
 initializePassportConfig();
 app.use(passport.initialize());
-app.use(passport.session());
-
-
 
 app.use('/',viewsRouter);
 

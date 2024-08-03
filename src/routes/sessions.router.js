@@ -1,35 +1,30 @@
 import { Router } from "express";
 import passport from "passport";
+import jwt from 'jsonwebtoken'
+
+import { passportCall } from "../middlewares/passportCall.js";
 
 const sessionsRouter = Router();
 
-sessionsRouter.post('/register',passport.authenticate('register',{failureRedirect:'/api/sessions/registerFail',failureMessage:true}), async(req,res)=>{
+sessionsRouter.post('/register',passportCall('register'), async(req,res)=>{
     res.send({status:"sucess",message:"Registered"});    
 })
 
-sessionsRouter.get('/registerFail',(req,res)=>{
-    const messages = req.session.messages || [];
-    req.session.messages = [];
+sessionsRouter.post('/login',passportCall('login'),async(req,res)=>{
 
-    res.status(401).send({ status: "error", messages });
-})
+    const sessionUser = {
+        name: `${req.user.first_name} ${req.user.last_name}`,
+        role: req.user.roles,
+        id: req.user._id
+    }
 
-sessionsRouter.post('/login',passport.authenticate('login',{failureRedirect:'/api/sessions/failureLogin',failureMessage:true}),async(req,res)=>{
-    res.send({status:"success",message:"logged in"});
-})
+    const token = jwt.sign(sessionUser,'clavesecreta',{expiresIn:'1d'});
 
-sessionsRouter.get('/failureLogin',(req,res)=>{
-    const messages = req.session.messages || [];
-    req.session.messages = [];
-
-    res.status(401).send({ status: "error", messages });
+    res.cookie('sid',token).send({status:"success",message:"logged in"});
 })
 
 sessionsRouter.get('/logout',async(req,res)=>{
-    req.session.destroy(error=>{
-        if(error) return res.status(500).send({status:"error",error:"Couldn't close session"})
-        res.redirect('/login')
-    })
+    res.clearCookie('sid').redirect('/login');
 })
 
 export default sessionsRouter;

@@ -1,4 +1,5 @@
 import { Router } from "express";
+import passport from "passport";
 
 const viewsRouter = Router();
 
@@ -19,6 +20,19 @@ viewsRouter.get('/login',(req,res)=>{
     res.render('Login',{
         title:'Iniciar sesion',
         css:'login'
+    })
+})
+
+viewsRouter.get('/profile',passport.authenticate('current',{session:false}),(req,res) =>{
+
+    if(!req.user){
+        return res.redirect('/login');
+    }
+
+    res.render('Profile',{
+        title:'Profile',
+        css:'profile',
+        user: req.user
     })
 })
 

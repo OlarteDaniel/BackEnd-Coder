@@ -1,10 +1,9 @@
 import passport from "passport";
-import local from 'passport-local';
+import {Strategy as LocalStrategy} from 'passport-local';
+import {ExtractJwt, Strategy as JWTStrategy} from 'passport-jwt';
 
 import { usersService,cartsService } from "../manager/index.js";
 import AuthService from "../services/AuthService.js";
-
-const LocalStrategy = local.Strategy;
 
 const initializePassportConfig = () =>{
     
@@ -40,7 +39,7 @@ const initializePassportConfig = () =>{
         }
 
         const resultUser = await usersService.createUser(newUser);
-        return done(null,resultUser._id);
+        return done(null,resultUser);
     }))
 
     passport.use('login', new LocalStrategy({usernameField:'email'},async(email,password,done) =>{
@@ -57,24 +56,19 @@ const initializePassportConfig = () =>{
             return done(null,false,{message:"Incorrect credentials"});
         }
 
-        return done(null,user._id)
+        return done(null,user)
     }))
 
-    passport.serializeUser((userId,done)=>{
-        done(null,userId);
-    });
+    passport.use('current', new JWTStrategy({
+        secretOrKey:"clavesecreta",
+        jwtFromRequest:ExtractJwt.fromExtractors([cookieExtractor])
+    }, async(payload,done)=>{
+        return done(null,payload);
+    }))
+}
 
-    passport.deserializeUser(async(userId,done)=>{
-        const user = await usersService.getUserById(userId);
-        
-        const userSession = {
-            name: `${user.first_name} ${user.last_name}`,
-            role: user.roles
-        }
-
-        done(null,userSession);
-    });
-
+function cookieExtractor(req){
+    return req?.cookies?.['sid'];
 }
 
 export default initializePassportConfig;
