@@ -2,10 +2,11 @@ import BaseRouter from "./BaseRouter.js";
 import { passportCall } from "../middlewares/passportCall.js";
 import { productsService } from "../manager/index.js";
 
+
 class ViewsRouter extends BaseRouter {
     init(){
 
-        this.get('/',passportCall('current'),(req,res)=>{
+        this.get('/',['USER','ADMIN'],(req,res)=>{
             if(!req.user){
                 return res.redirect('/login');
             }
@@ -17,7 +18,7 @@ class ViewsRouter extends BaseRouter {
             });
         })
 
-        this.get('/register/products',async (req,res)=>{
+        this.get('/register/products',['ADMIN'],async (req,res)=>{
             const products = await productsService.getProducts();
         
             res.render('RegisterProducts',{
@@ -27,7 +28,7 @@ class ViewsRouter extends BaseRouter {
             })
         })
         
-        this.get('/products',async (req, res)=>{
+        this.get('/products',['USER','ADMIN'],async (req, res)=>{
         
             const productsResponse  = await productsService.getProducts();
         
@@ -44,7 +45,7 @@ class ViewsRouter extends BaseRouter {
             })
         })
         
-        this.get('/products/details/:id',async(req,res)=>{
+        this.get('/products/details/:id',['USER','ADMIN'],async(req,res)=>{
             const pid = req.params.id;
             const productResponse = await productsService.getProductsById(pid);
         
@@ -64,21 +65,21 @@ class ViewsRouter extends BaseRouter {
             })
         })
         
-        this.get('/register',(req,res)=>{
+        this.get('/register',['PUBLIC'],(req,res)=>{
             res.render('Register',{
                 title:'Registrar Usuario',
                 css:'register'
             })
         })
         
-        this.get('/login',(req,res)=>{
+        this.get('/login',['PUBLIC'],(req,res)=>{
             res.render('Login',{
                 title:'Iniciar sesion',
                 css:'login'
             })
         })
         
-        this.get('/profile',passportCall('current'),(req,res) =>{
+        this.get('/profile',['USER'],(req,res) =>{
         
             if(!req.user){
                 return res.redirect('/login');

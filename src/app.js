@@ -5,10 +5,6 @@ import passport from 'passport';
 import cookieParser from 'cookie-parser';
 
 import __dirname from './utils.js';
-import productsRouter from './routes/products.router.js';
-import cartsRouter from './routes/carts.router.js';
-import sessionsRouter from './routes/sessions.router.js';
-import viewsRouter from './routes/views.router.js';
 import initializePassportConfig from './config/passport.config.js';
 
 import ProductsRouter from './routes/ProductsRouter.js';

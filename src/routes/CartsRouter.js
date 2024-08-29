@@ -6,7 +6,7 @@ class CartsRouter extends BaseRouter{
 
     init(){
 
-        this.get('/',async(req,res)=>{
+        this.get('/',['ADMIN'],async(req,res)=>{
             const carts = await cartsService.getCarts();
         
             if(carts.length === 0){
@@ -20,7 +20,7 @@ class CartsRouter extends BaseRouter{
         
         
         // METODO GET POR ID
-        this.get('/:id',async(req,res)=>{
+        this.get('/:id',['USER'],async(req,res)=>{
             const cid = req.params.id;
         
             const cart = await cartsService.getCartsById(cid);
@@ -37,7 +37,7 @@ class CartsRouter extends BaseRouter{
         
         // METODO POST POR CARRITO 
         
-        this.post('/:cid/products/:pid',async(req,res)=>{
+        this.post('/:cid/products/:pid',['USER'],async(req,res)=>{
             const {cid,pid} = req.params;
         
             const cart = await cartsService.getCartsById(cid);
@@ -68,7 +68,7 @@ class CartsRouter extends BaseRouter{
         
         // METODO PUT POR CARRITO
         
-        this.put('/:id',async(req,res)=>{
+        this.put('/:id',['USER'],async(req,res)=>{
             const cid = req.params.id;
             const data = req.body;
         
@@ -89,7 +89,7 @@ class CartsRouter extends BaseRouter{
         
         // METODO PUT POR CANTIDAD DE PRODUCTOS
         
-        this.put('/:cid/products/:pid',async(req,res)=>{
+        this.put('/:cid/products/:pid',['USER'],async(req,res)=>{
             const {cid,pid} = req.params;
             const data = req.body;
         
@@ -121,7 +121,7 @@ class CartsRouter extends BaseRouter{
         
         // METODO DELETE POR PRODUCTO 
         
-        this.delete('/:cid/products/:pid',async(req,res)=>{
+        this.delete('/:cid/products/:pid',['USER'],async(req,res)=>{
             const {cid,pid} = req.params;
         
             const cart = await cartsService.getCartsById(cid);
@@ -150,7 +150,7 @@ class CartsRouter extends BaseRouter{
         
         // METODO DELETE CARRITO 
         
-        this.delete('/:id',async(req,res)=>{
+        this.delete('/:id',['USER'],async(req,res)=>{
             const cid = req.params.id;
         
             const cart = await cartsService.getCartsById(cid);

@@ -8,9 +8,9 @@ export const passportCall = (strategy) =>{
             if(!user){
                 req.user = null;
                 if(info.message == "No auth token"){
-                    next();
+                    return next();
                 }else{
-                    return res.status(401).send({ status: "error", message: info.message });
+                    return res.sendUnauthorized(info.message );
                 }
             }
 

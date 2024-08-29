@@ -7,11 +7,11 @@ import { passportCall } from "../middlewares/passportCall.js";
 class SessionsRouter extends BaseRouter{
     init(){
 
-        this.post('/register',passportCall('register'), async(req,res)=>{
+        this.post('/register',['PUBLIC'],passportCall('register'), async(req,res)=>{
             res.sendSuccess('Registered');    
         })
         
-        this.post('/login',passportCall('login'),async(req,res)=>{
+        this.post('/login',['PUBLIC'],passportCall('login'),async(req,res)=>{
         
             const sessionUser = {
                 name: `${req.user.first_name} ${req.user.last_name}`,
@@ -24,11 +24,11 @@ class SessionsRouter extends BaseRouter{
             return res.cookie('sid',token).sendSuccess('logged in');
         })
         
-        this.get('/logout',async(req,res)=>{
+        this.get('/logout',['USER','ADMIN'],async(req,res)=>{
             res.clearCookie('sid').redirect('/login');
         })
         
-        this.get('/current',passportCall('current'),async (req,res)=>{
+        this.get('/current',['USER','ADMIN'],passportCall('current'),async (req,res)=>{
         
             if(!req.user){
                 return res.sendUnauthorized('Not logged in');

@@ -7,7 +7,7 @@ class ProductsRouter extends BaseRouter{
     init(){
         // METODO GET
 
-        this.get('/',async(req,res) =>{
+        this.get('/',['USER','ADMIN'],async(req,res) =>{
             const limit = parseInt(req.query.limit) || 10;
             const page = parseInt(req.query.page) || 1;
 
@@ -53,7 +53,7 @@ class ProductsRouter extends BaseRouter{
 
         // METODO GET POR ID
 
-        this.get('/:id',async(req,res) =>{
+        this.get('/:id',['USER','ADMIN'],async(req,res) =>{
             const pid = req.params.id;
 
             const product = await productsService.getProductsById(pid);
@@ -70,7 +70,7 @@ class ProductsRouter extends BaseRouter{
 
         // METODO POST
 
-        this.post('/',uploader.array('thumbnails',3),async(req,res) =>{
+        this.post('/',['ADMIN'],uploader.array('thumbnails',3),async(req,res) =>{
             
             const {title,description,code,price,stock,category} = req.body;
             const thumbnails = [];
@@ -107,7 +107,7 @@ class ProductsRouter extends BaseRouter{
 
         // METEDO PUT
 
-        this.put('/:id',async(req,res)=>{
+        this.put('/:id',['ADMIN'],async(req,res)=>{
             const pid = req.params.id;
             const data = req.body;
 
@@ -143,7 +143,7 @@ class ProductsRouter extends BaseRouter{
 
         // METODO DELETE
 
-        this.delete('/:id',async(req,res) =>{
+        this.delete('/:id',['ADMIN'],async(req,res) =>{
             const pid = req.params.id;
 
             const result = await productsService.deleteProduct(pid);

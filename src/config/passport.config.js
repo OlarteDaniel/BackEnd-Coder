@@ -8,7 +8,7 @@ import AuthService from "../services/AuthService.js";
 const initializePassportConfig = () =>{
     
     passport.use('register', new LocalStrategy({usernameField:'email',passReqToCallback:true},async (req,email,password,done)=>{
-        const {first_name,last_name,age} = req.body;
+        const {first_name,last_name,age,roles} = req.body;
 
         if(!first_name || !last_name || !age){
             return done(null,false,{message:'Incomplete values'});
@@ -35,7 +35,8 @@ const initializePassportConfig = () =>{
             email,
             age,
             password:hashedPassword,
-            cart: resultCart._id
+            cart: resultCart._id,
+            roles:roles || 'user'
         }
 
         const resultUser = await usersService.createUser(newUser);
