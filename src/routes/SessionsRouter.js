@@ -3,6 +3,7 @@ import passport from "passport";
 import jwt from 'jsonwebtoken'
 
 import { passportCall } from "../middlewares/passportCall.js";
+import config from "../config/config.js";
 
 class SessionsRouter extends BaseRouter{
     init(){
@@ -19,7 +20,7 @@ class SessionsRouter extends BaseRouter{
                 id: req.user._id
             }
         
-            const token = jwt.sign(sessionUser,'clavesecreta',{expiresIn:'1d'});
+            const token = jwt.sign(sessionUser,config.auth.jwt.SECRET,{expiresIn:'1d'});
         
             return res.cookie('sid',token).sendSuccess('logged in');
         })

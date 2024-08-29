@@ -4,6 +4,7 @@ import {ExtractJwt, Strategy as JWTStrategy} from 'passport-jwt';
 
 import { usersService,cartsService } from "../manager/index.js";
 import AuthService from "../services/AuthService.js";
+import config from "./config.js";
 
 const initializePassportConfig = () =>{
     
@@ -61,7 +62,7 @@ const initializePassportConfig = () =>{
     }))
 
     passport.use('current', new JWTStrategy({
-        secretOrKey:"clavesecreta",
+        secretOrKey:config.auth.jwt.SECRET,
         jwtFromRequest:ExtractJwt.fromExtractors([cookieExtractor])
     }, async(payload,done)=>{
         return done(null,payload);

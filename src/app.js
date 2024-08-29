@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 
 import __dirname from './utils.js';
 import initializePassportConfig from './config/passport.config.js';
+import config from './config/config.js';
 
 import ProductsRouter from './routes/ProductsRouter.js';
 import CartsRouter from './routes/CartsRouter.js';
@@ -14,12 +15,19 @@ import ViewsRouter from './routes/ViewsRouter.js';
 
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = config.app.PORT;
 
-const CONNECTION_STRING = 'mongodb+srv://DanielOlarte:123@clustercoderhouse.dzsdloa.mongodb.net/store?retryWrites=true&w=majority&appName=ClusterCoderHouse'
+const CONNECTION_STRING = config.mongo.URL;
 const connection = mongoose.connect(CONNECTION_STRING);
 
-app.engine('handlebars',handlebars.engine());
+app.engine('handlebars',handlebars.engine({
+    defaultLayout: 'main',
+    helpers:{
+        eq: function(a,b){
+            return a === b;
+        }
+    }
+}));
 app.set('views',`${__dirname}/views`);
 app.set('view engine','handlebars');
 

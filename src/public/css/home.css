@@ -60,6 +60,7 @@
 /* Estilos para el marco de botones principales */
 .frame {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: 20px; /* Espacio entre los botones */
 }
@@ -87,7 +88,6 @@
     }
 
     .frame {
-        flex-direction: column;
         gap: 10px;
     }
 

@@ -10,7 +10,6 @@ class ViewsRouter extends BaseRouter {
             if(!req.user){
                 return res.redirect('/login');
             }
-        
             res.render('Home',{
                 title:'Index',
                 css:'home',
