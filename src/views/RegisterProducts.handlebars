@@ -1,0 +1,50 @@
+<a href="/" class="menu-link back-button">Volver al Menú</a>
+<div class="container">
+    <h1 class="section-title">Registrar Productos</h1>
+
+    <div class="form-container">
+        <form id="productForm" enctype="multipart/form-data" class="form">
+            <div class="inputbox">
+                <label for="title">Título</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+
+            <div class="inputbox">
+                <label for="description">Descripción</label>
+                <input type="text" id="description" name="description" required>
+            </div>
+
+            <div class="inputbox">
+                <label for="code">Código</label>
+                <input type="number" id="code" name="code" required>
+            </div>
+
+            <div class="inputbox">
+                <label for="price">Precio</label>
+                <input type="number" id="price" name="price" step="0.01" required>
+            </div>
+
+            <div class="inputbox">
+                <label for="stock">Stock</label>
+                <input type="number" id="stock" name="stock" required>
+            </div>
+
+            <div class="inputbox">
+                <label for="category">Categoría</label>
+                <input type="text" id="category" name="category" required>
+            </div>
+
+            <div class="inputbox">
+                <label for="thumbnails">Imagen</label>
+                <input type="file" id="thumbnails" name="thumbnails" accept="image/*" multiple>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="form-button">Agregar</button>
+                <button type="reset" class="form-button reset-button">Borrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/js/productRegister.js"></script>

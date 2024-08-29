@@ -1,6 +1,6 @@
 /* Estilos generales del contenedor */
-.register-container {
-    max-width: 600px;
+.container {
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f7f7f7;
@@ -8,6 +8,21 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
     text-align: center;
+}
+
+/* Estilo para el botón de volver al menú */
+.menu-link {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #008CBA;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu-link:hover {
+    text-decoration: underline;
 }
 
 /* Título de la sección */
@@ -19,8 +34,13 @@
 }
 
 /* Estilos para el formulario */
-.form {
+.form-container {
     text-align: left;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
 }
 
 /* Estilos para los input boxes */
@@ -36,9 +56,8 @@
 }
 
 .inputbox input[type="text"],
-.inputbox input[type="email"],
 .inputbox input[type="number"],
-.inputbox input[type="password"] {
+.inputbox input[type="file"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -47,16 +66,20 @@
     font-size: 16px;
 }
 
-/* Estilos para el botón de formulario */
-.inputbox-button {
+.inputbox input[type="file"] {
+    padding: 3px;
+}
+
+/* Estilos para los botones */
+.button-container {
     margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
 }
 
 .form-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #008CBA;
-    color: white;
+    padding: 12px 20px;
     border: none;
     border-radius: 4px;
     font-size: 16px;
@@ -64,29 +87,26 @@
     transition: background-color 0.3s;
 }
 
+.form-button {
+    background-color: #008CBA;
+    color: white;
+}
+
 .form-button:hover {
     background-color: #007bb5;
 }
 
-/* Estilo para el enlace de inicio de sesión */
-.login-link {
-    margin-top: 20px;
-    font-size: 14px;
+.reset-button {
+    background-color: #f44336;
 }
 
-.login-link a {
-    color: #008CBA;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.login-link a:hover {
-    text-decoration: underline;
+.reset-button:hover {
+    background-color: #d32f2f;
 }
 
 /* Estilos responsivos */
 @media (max-width: 600px) {
-    .register-container {
+    .container {
         padding: 15px;
     }
 
@@ -95,7 +115,8 @@
         padding: 10px;
     }
 
-    .login-link {
-        font-size: 13px;
+    .reset-button {
+        font-size: 14px;
+        padding: 10px;
     }
 }

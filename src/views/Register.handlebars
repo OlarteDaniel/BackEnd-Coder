@@ -1,24 +1,36 @@
-<div class="container">
-    <h2>Register</h2>
-    <form id="registerForm">
-        <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" name="first_name" >
+<div class="container register-container">
+    <h2 class="section-title">Register</h2>
+    <form id="registerForm" class="form">
+        <div class="inputbox">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name">
+        </div>
 
-        <label for="last_name">Last Name:</label>
-        <input type="text" id="last_name" name="last_name" required>
+        <div class="inputbox">
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required>
+        </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <div class="inputbox">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
 
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required>
+        <div class="inputbox">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+        <div class="inputbox">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
 
-        <button type="submit">Register</button>
+        <div class="inputbox-button">
+            <button type="submit" class="form-button">Register</button>
+        </div>
     </form>
-    <p>Already have an account? <a href="/login">Login here</a></p>
+    <p class="login-link">Already have an account? <a href="/login">Login here</a></p>
 </div>
 
 <script src="/js/register.js"></script>

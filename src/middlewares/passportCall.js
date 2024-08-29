@@ -7,7 +7,11 @@ export const passportCall = (strategy) =>{
             
             if(!user){
                 req.user = null;
-                return res.status(401).send({ status: "error", message: info.message });
+                if(info.message == "No auth token"){
+                    next();
+                }else{
+                    return res.status(401).send({ status: "error", message: info.message });
+                }
             }
 
             req.user = user;

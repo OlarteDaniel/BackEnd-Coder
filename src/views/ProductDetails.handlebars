@@ -1,0 +1,35 @@
+<div class="container">
+    <a href="/" class="menu-link">Menú</a>
+    <div class="product-details">
+        <div class="product-images">
+            <div class="main-image">
+                {{#if product.thumbnails.length}}
+                    {{#each product.thumbnails}}
+                        {{#if main}}
+                            <img src="{{this.path}}" alt="{{../product.title}}" class="product-image-main">
+                        {{/if}}
+                    {{/each}}
+                {{else}}
+                    <img src="/upload/products/ImagenDefault.jpg" alt="{{product.title}}" class="product-image-main">
+                {{/if}}
+            </div>
+
+            <div class="secondary-images">
+                {{#if product.thumbnails.length}}
+                    {{#each product.thumbnails}}
+                        <img src="{{this.path}}" alt="{{product.title}}" class="product-image-secondary">
+                    {{/each}}
+                {{else}}
+                    <img src="/upload/products/ImagenDefault.jpg" alt="{{product.title}}" class="product-image-secondary">
+                {{/if}}
+            </div>
+        </div>
+        <div class="product-info">
+            <h2 class="product-title">{{product.title}}</h2>
+            <p class="product-price">Precio: $ {{product.price}}</p>
+            <p class="product-description">Descripción: {{product.description}}</p>
+            <p class="product-stock">Stock disponible: {{product.stock}}</p>
+            <button class="buy-button">Comprar ahora</button>
+        </div>
+    </div>
+</div>

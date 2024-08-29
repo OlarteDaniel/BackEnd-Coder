@@ -2,6 +2,7 @@ import express from 'express';
 import { Router } from 'express';
 
 import {productsService} from '../manager/index.js';
+import uploader from '../services/uploadService.js';
 
 const router = Router();
 
@@ -69,20 +70,27 @@ router.get('/:id',async(req,res) =>{
 
 // METODO POST
 
-router.post('/',async(req,res) =>{
-    const data = req.body;
+router.post('/',uploader.array('thumbnails',3),async(req,res) =>{
+    
+    const {title,description,code,price,stock,category} = req.body;
+    const thumbnails = [];
 
-    if(!data.title || !data.description || !data.code || !data.category || !data.price){
+    if(!title || !description || !code || !price || !category){
         return res.status(400).send({status:"error",error:"Information missing"});
     }
 
+    for(let i=0; i<req.files.length;i++){
+        thumbnails.push({mimetype:req.files[i].mimetype,path:`/upload/products${req.files[i].filename}`,main:i==0})
+    }
+
     const newProduct = {
-        title: data.title,
-        description: data.description,
-        code: data.code,
-        price: data.price,
-        stock: data.stock || 1,
-        category: data.category
+        title,
+        description,
+        code,
+        price,
+        stock: stock || 1,
+        category,
+        thumbnails
     }
 
     const result = await productsService.createProduct(newProduct);

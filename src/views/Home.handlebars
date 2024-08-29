@@ -1,1 +1,26 @@
-<h1>Hola mundo</h1>
+<div class="container">
+    <div class="header">
+        <h1 class="title">Coder Store</h1>
+        {{#if user}}
+            <a href="/api/sessions/logout" class="button-link">
+                <button class="auth-button">Logout</button>
+            </a>
+        {{else}}
+            <a href="/login" class="button-link">
+                <button class="auth-button">Login</button>
+            </a>
+        {{/if}}
+    </div>
+
+    <div class="main-content">
+        <h2 class="section-title">Menu Principal</h2>
+        <div class="frame">
+            <a href="/products" class="button-link">
+                <button class="main-button">Productos</button>
+            </a>
+            <a href="/register/products" class="button-link">
+                <button class="main-button">Registrar productos</button>
+            </a>
+        </div>
+    </div>
+</div>

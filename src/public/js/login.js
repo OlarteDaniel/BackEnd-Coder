@@ -20,7 +20,7 @@ loginForm.addEventListener('submit',async evt =>{
         })
     
         if(response.ok == true){
-            window.location.href = '/profile';
+            window.location.href = '/';
         }
     } catch (error) {
         console.log(error)

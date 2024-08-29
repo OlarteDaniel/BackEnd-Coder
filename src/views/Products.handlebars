@@ -1,0 +1,33 @@
+<a href="/" class="menu-link agregar">Menu</a>
+<div class="container">
+    <h1 class="section-title">Listado de productos</h1>
+
+    {{#if products.length}}
+        <div class="productos">
+            {{#each products}}
+                <div class="producto">
+                    <h2 class="titulo">{{this.title}}</h2>
+
+                    {{#if this.thumbnails.length}}
+                        {{#each this.thumbnails}}
+                            {{#if main}}
+                                <img src="{{this.path}}" alt="{{../title}}" class="product-image">
+                            {{/if}}
+                        {{/each}}
+                    {{else}}
+                        <img src="/upload/products/ImagenDefault.jpg" alt="Imagen por defecto" class="product-image">
+                    {{/if}}
+
+                    <a href="/products/details/{{this.id}}" class="button-link">
+                        <button class="view-button">Ver más</button>
+                    </a>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="no-products">
+            <p class="no-products-message">No hay productos disponibles</p>
+            <a href="/register/products" class="add-products-link">Agregar Productos</a>
+        </div>
+    {{/if}}
+</div>

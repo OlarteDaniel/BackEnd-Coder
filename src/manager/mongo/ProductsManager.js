@@ -21,5 +21,5 @@ export default class ProductsManager{
     async deleteProduct(productId){
         return productModel.deleteOne({_id:productId});
     }
-p
+
 }
