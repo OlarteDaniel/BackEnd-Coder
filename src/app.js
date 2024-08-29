@@ -11,6 +11,11 @@ import sessionsRouter from './routes/sessions.router.js';
 import viewsRouter from './routes/views.router.js';
 import initializePassportConfig from './config/passport.config.js';
 
+import ProductsRouter from './routes/ProductsRouter.js';
+import CartsRouter from './routes/CartsRouter.js';
+import SessionsRouter from './routes/SessionsRouter.js';
+import ViewsRouter from './routes/ViewsRouter.js';
+
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -30,10 +35,10 @@ app.use(cookieParser());
 initializePassportConfig();
 app.use(passport.initialize());
 
-app.use('/',viewsRouter);
+app.use('/',ViewsRouter);
 
-app.use('/api/sessions',sessionsRouter);
-app.use('/api/products',productsRouter);
-app.use('/api/carts',cartsRouter);
+app.use('/api/sessions',SessionsRouter);
+app.use('/api/products',ProductsRouter);
+app.use('/api/carts',CartsRouter);
 
 const server = app.listen(PORT,console.log(`Listening on port ${PORT}`));

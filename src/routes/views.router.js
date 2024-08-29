@@ -1,5 +1,4 @@
 import { Router } from "express";
-import passport from "passport";
 import { passportCall } from "../middlewares/passportCall.js";
 import { productsService } from "../manager/index.js";
 
