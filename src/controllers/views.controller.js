@@ -1,4 +1,4 @@
-import { productsService } from "../manager/index.js";
+import { productsService,usersService,cartsService } from "../manager/index.js";
 
 const home = (req,res)=>{
     if(!req.user){
@@ -43,6 +43,7 @@ const viewProductDetailsById = async(req,res)=>{
     const productResponse = await productsService.getProductsById(pid);
 
     const product = {
+        id: pid,
         title: productResponse.title,
         description:productResponse.description,
         code:productResponse.code,
@@ -54,7 +55,8 @@ const viewProductDetailsById = async(req,res)=>{
     res.render('ProductDetails',{
         title:"Detalles de producto",
         css:"productDetails",
-        product:product
+        product:product,
+        user:req.user
     })
 }
 
@@ -86,6 +88,28 @@ const profile = (req,res) =>{
 
 }
 
+const cart = async (req,res) =>{
+    const {uid} = req.params
+    const user = await usersService.getUserById(uid)
+    const cart = await cartsService.getCartsById(user.cart)
+
+    
+
+    const plainCart = JSON.parse(JSON.stringify(cart));
+
+    const total = plainCart.products.reduce((accumulator, item) => {
+        return accumulator + (item.product.price * item.quantity);
+    }, 0);
+
+    res.render('Cart',{
+        title:'Carrito',
+        css:'cart',
+        cart: plainCart,
+        cartTotal: total
+    })
+
+}
+
 const unauthorized = (req,res)=>{
     res.render('Unauthorized',{
         title:'Acceso denegado',
@@ -94,6 +118,7 @@ const unauthorized = (req,res)=>{
 }
 
 export default{
+    cart,
     home,
     login,
     profile,

@@ -1,0 +1,52 @@
+<div class="cart-container">
+    <!-- Enlace para regresar al catálogo de productos -->
+    <a href="/products" class="menu-link">Volver al catálogo</a>
+    
+    <!-- Título de la página del carrito -->
+    <h1 class="cart-title">Carrito de Compras</h1>
+
+    <!-- Verificar si hay productos en el carrito -->
+    {{#if cart.products.length}}
+    <!-- Sección de productos en el carrito -->
+    <div class="cart-products">
+        <!-- Bucle para recorrer los productos en el carrito -->
+        {{#each cart.products}}
+        <div class="cart-product">
+            <!-- Imagen del producto -->
+            <img src="{{this.product.thumbnails.[0].path}}" alt="{{this.product.title}}" class="cart-product-image">
+
+            <!-- Información del producto -->
+            <div class="cart-product-info">
+                <h3 class="cart-product-title">{{this.product.title}}</h3>
+                <p class="cart-product-price">Precio: $ {{this.product.price}}</p>
+                <p class="cart-product-subtotal">Subtotal: $ {{multiply this.product.price this.quantity}}</p>
+
+                <!-- Cantidad del producto -->
+                <p class="cart-product-quantity">Cantidad: {{this.quantity}}</p>
+
+                <!-- Botón para eliminar producto del carrito -->
+                <button class="remove-button" onclick="removeFromCart('{{this.product._id}}','{{../cart._id}}')">Eliminar</button>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+
+    <!-- Resumen del carrito -->
+    <div class="cart-summary">
+        <p class="cart-total-label">Total:</p>
+        <p class="cart-total-amount">$ {{cartTotal}}</p>
+    </div>
+
+    <!-- Botón para proceder al pago -->
+    <button class="checkout-button" onclick="proceedToCheckout()">Proceder al Pago</button>
+
+    {{else}}
+    <!-- Mensaje cuando el carrito está vacío -->
+    <div class="empty-cart">
+        <p>Tu carrito está vacío.</p>
+    </div>
+    {{/if}}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/cart.js"></script>

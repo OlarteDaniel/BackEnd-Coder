@@ -29,7 +29,26 @@
             <p class="product-price">Precio: $ {{product.price}}</p>
             <p class="product-description">Descripción: {{product.description}}</p>
             <p class="product-stock">Stock disponible: {{product.stock}}</p>
-            <button class="buy-button">Comprar ahora</button>
+
+            <!-- Mostrar elementos según el rol del usuario -->
+            {{#if (eq user.role 'user')}}
+            <!-- Controles de usuario regular -->
+            <div class="quantity-control">
+                <button class="quantity-btn decrease" onclick="updateQuantity(-1,{{product.stock}})">-</button>
+                <input type="text" id="quantity" value="1" readonly>
+                <button class="quantity-btn increase" onclick="updateQuantity(1,{{product.stock}})">+</button>
+            </div>
+            <button class="buy-button" onclick="addCart('{{product.id}}','{{user.id}}')">Agregar al carrito</button>
+            {{else if (eq user.role 'admin')}}
+            <!-- Controles de administrador -->
+            <div class="admin-controls">
+                <button class="edit-button" onclick="editProduct('{{product.id}}')">Editar</button>
+                <button class="delete-button" onclick="deleteProduct('{{product.id}}')">Eliminar</button>
+            </div>
+            {{/if}}
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/productDetails.js"></script>

@@ -19,6 +19,8 @@ class ViewsRouter extends BaseRouter {
         
         this.get('/profile',['USER'],viewsController.profile)
 
+        this.get('/cart/:uid',['USER'],viewsController.cart)
+
         this.get('/unauthorized',['USER','ADMIN'],viewsController.unauthorized)
     }
 }

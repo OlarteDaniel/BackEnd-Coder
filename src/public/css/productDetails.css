@@ -9,7 +9,7 @@
     font-family: Arial, sans-serif;
 }
 
-/* Enlace del menú */
+/* Estilos para enlaces y botones del menú */
 .menu-link {
     display: block;
     text-align: center;
@@ -103,6 +103,42 @@
     color: #555;
 }
 
+/* Control de cantidad de productos */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.quantity-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+.quantity-btn:hover {
+    background-color: #007bb5;
+}
+
+#quantity {
+    width: 40px;
+    text-align: center;
+    font-size: 16px;
+    margin: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
 /* Botón de compra */
 .buy-button {
     background-color: #008CBA;
@@ -119,21 +155,34 @@
     background-color: #007bb5;
 }
 
-/* Botón de volver */
-.back-button {
-    background-color: #e63946;
+/* Botones de editar y eliminar para admin */
+.admin-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.edit-button, .delete-button {
+    background-color: #f39c12;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 20px;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-left: 10px;
 }
 
-.back-button:hover {
-    background-color: #c53030;
+.edit-button:hover {
+    background-color: #e67e22;
+}
+
+.delete-button {
+    background-color: #e74c3c;
+}
+
+.delete-button:hover {
+    background-color: #c0392b;
 }
 
 /* Estilos responsivos */

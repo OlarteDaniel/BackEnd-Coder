@@ -14,6 +14,10 @@ export default class UserManager {
         return usersModel.findOne({email:userEmail});
     }
 
+    getUserByCart(cart){
+        return usersModel.findOne({cart:cart})
+    }
+
     createUser(user){
         return usersModel.create(user);
     }

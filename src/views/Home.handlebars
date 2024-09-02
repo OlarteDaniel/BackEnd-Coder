@@ -1,19 +1,33 @@
 <div class="container">
     <div class="header">
         <h1 class="title">Coder Store</h1>
-        {{#if user}}
-            <a href="/api/sessions/logout" class="button-link">
-                <button class="auth-button">Logout</button>
-            </a>
-        {{else}}
-            <a href="/login" class="button-link">
-                <button class="auth-button">Login</button>
-            </a>
-        {{/if}}
+
+        <!-- Nueva sección de botones en el header -->
+        <div class="header-buttons">
+            {{#if (eq user.role 'user')}}
+                <!-- Botón del carrito -->
+                <a href="/cart/{{user.id}}" class="button-link">
+                    <button class="header-button">Carrito</button>
+                </a>
+                <!-- Botón del usuario -->
+                <a href="/profile" class="button-link">
+                    <button class="header-button">{{user.name}}</button>
+                </a>
+            {{/if}}
+            {{#if user}}
+                <a href="/api/sessions/logout" class="button-link">
+                    <button class="auth-button">Logout</button>
+                </a>
+            {{else}}
+                <a href="/login" class="button-link">
+                    <button class="auth-button">Login</button>
+                </a>
+            {{/if}}
+        </div>
     </div>
 
     <div class="main-content">
-        <h2 class="section-title">Menu Principal</h2>
+        <h2 class="section-title">Menú Principal</h2>
         <div class="frame">
             {{#if (eq user.role 'admin')}}
                 <a href="/products" class="button-link">

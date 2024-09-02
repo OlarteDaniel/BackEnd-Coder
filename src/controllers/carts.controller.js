@@ -1,4 +1,4 @@
-import {productsService,cartsService} from '../manager/index.js';
+import {productsService,cartsService,usersService} from '../manager/index.js';
 
 const getAll = async(req,res)=>{
     const carts = await cartsService.getCarts();
@@ -23,9 +23,15 @@ const getOneById =async(req,res)=>{
 }
 
 const addCart = async(req,res)=>{
-    const {cid,pid} = req.params;
+    const {uid,pid} = req.params
+    const qty = req.body.quantity
+    
+    if(isNaN(qty) || qty <= 0) return res.sendBadRequest('The amount entered is not valid.')
+    
+    const qtyParse = parseInt(qty);
+    const user = await usersService.getUserById(uid)
+    const cart = await cartsService.getCartsById(user.cart)
 
-    const cart = await cartsService.getCartsById(cid);
     if(!cart) return res.sendNotFound("Cart doesn´t exist");
     const product = await productsService.getProductsById(pid);
     if(!product) return res.sendNotFound("Product doesn´t exist");
@@ -34,16 +40,22 @@ const addCart = async(req,res)=>{
         return prod.product._id == pid;
     })
 
+    if(qtyParse > product.stock) return res.sendBadRequest('Exceeds the quantity in stock')
+
     if(productIndex === -1){
         cart.products.push({
             product:pid,
-            quantity:1
+            quantity: qtyParse
         })
     }else{
-        cart.products[productIndex].quantity++;
+        cart.products[productIndex].quantity +=  qtyParse;
+        if(cart.products[productIndex].quantity > product.stock) return res.sendBadRequest('Exceeds the quantity in stock')
     }
 
-    const result = await cartsService.modifyProducto(cid,cart);
+
+    // if(cart.products[productIndex].quantity > product.stock) return res.sendBadRequest('Exceeds the quantity in stock')
+
+    const result = await cartsService.modifyProducto(user.cart,cart);
 
     return res.sendSuccess('Added product');
 }
@@ -104,13 +116,7 @@ const removeProduct = async(req,res)=>{
     if(productIndex === -1){
         return res.sendNotFound("Product not found in cart");
     }else{
-        if(cart.products[productIndex].quantity > 1){
-            cart.products[productIndex].quantity--;
-            const result = await cartsService.modifyProducto(cid,cart);
-            return res.sendSuccess('Product quantity decreased by 1');
-        }else{
-            const result = await cartsService.deleteProduct(cid,pid);
-        }
+        const result = await cartsService.deleteProduct(cid,pid);
     }
     return res.sendSuccess('Product removed from cart');
 }

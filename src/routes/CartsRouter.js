@@ -19,7 +19,7 @@ class CartsRouter extends BaseRouter{
         
         // METODO POST POR CARRITO 
         
-        this.post('/:cid/products/:pid',['USER'],cartsController.addCart)
+        this.post('/:uid/products/:pid',['USER'],cartsController.addCart)
         
         // METODO POST POR CARRITO 
         
