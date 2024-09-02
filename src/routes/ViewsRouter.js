@@ -10,6 +10,8 @@ class ViewsRouter extends BaseRouter {
         this.get('/register/products',['ADMIN'],viewsController.registerProducts)
         
         this.get('/products',['USER','ADMIN'],viewsController.viewsProducts)
+
+        this.get('/product/edit/:pid',['ADMIN'],viewsController.updateProduct)
         
         this.get('/products/details/:id',['USER','ADMIN'],viewsController.viewProductDetailsById)
         

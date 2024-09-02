@@ -95,20 +95,16 @@ const updateProduct = async(req,res)=>{
         return res.sendNotFound('Product not found');
     }
 
-    if(!data.title || !data.description || !data.code || !data.category || !data.price){
+    if(!data.title || !data.description || !data.price || !data.price){
         return res.sendBadRequest('Information missing');
     }
 
     const updateProduct = {
         title: data.title,
         description: data.description,
-        code: data.code,
         price: data.price,
         stock: data.stock,
-        category: data.category
     }
-
-    
 
     const result = await productsService.updateProduct(pid,updateProduct);
 

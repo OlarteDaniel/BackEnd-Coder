@@ -67,3 +67,32 @@ async function addCart(pid,uid){
         console.error('Error:', error);
     }
 }
+
+async function editProduct(pid) {
+    window.location.href = `/product/edit/${pid}`
+}
+
+async function deleteProduct(pid) {
+    
+    try {
+        const response = await fetch(`/api/products/${pid}`,{
+            method:'DELETE'
+        });
+
+        const result = await response.json()
+
+        if(result.status === 'success'){
+            window.location.href = '/products'
+        }else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: result.message
+            });
+        }
+
+    } catch (error) {
+        
+    }
+
+}

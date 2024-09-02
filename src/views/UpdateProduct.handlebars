@@ -1,0 +1,36 @@
+<a href="/" class="menu-link back-button">Volver al Menú</a>
+<div class="product-edit-container">
+    <h1 class="title">Modificar Producto</h1>
+    
+    <form id="updateForm" class="product-edit-form" >
+
+        <input type="hidden" name="productId" id="productId" value='{{product.id}}'>
+
+        <div class="form-group">
+            <label for="product-title">Título del Producto:</label>
+            <input type="text" value='{{product.title}}' id="product-title" name="title" placeholder="Ingrese el título del producto" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="product-description">Descripción:</label>
+            <textarea id="product-description" name="description" placeholder="Ingrese la descripción del producto"required>{{product.description}}</textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="product-price">Precio:</label>
+            <input type="number" value='{{product.price}}' id="product-price" name="price" placeholder="Ingrese el precio del producto" step="0.01" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="product-stock">Stock:</label>
+            <input type="number" value='{{product.stock}}' id="product-stock" name="stock" placeholder="Ingrese la cantidad en stock" min="0" required>
+        </div>
+        
+        <div class="form-buttons">
+            <button type="submit" class="save-button">Guardar</button>
+            <button type="button" class="cancel-button" onclick="window.location.href='/products'">Cancelar</button>
+        </div>
+    </form>
+</div>
+
+<script src="/js/updateProduct.js"></script>

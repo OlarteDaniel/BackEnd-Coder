@@ -110,6 +110,27 @@ const cart = async (req,res) =>{
 
 }
 
+const updateProduct = async(req,res)=>{
+
+    const {pid} = req.params;
+    const productResponse = await productsService.getProductsById(pid);
+
+    const product = {
+        id: pid,
+        title: productResponse.title,
+        description:productResponse.description,
+        price:productResponse.price,
+        stock:productResponse.stock,
+    };
+
+    res.render('UpdateProduct',{
+        title:'Modificar Productos',
+        css:'updateProduct',
+        product:product
+    })
+
+}
+
 const unauthorized = (req,res)=>{
     res.render('Unauthorized',{
         title:'Acceso denegado',
@@ -125,6 +146,7 @@ export default{
     registerProducts,
     registerUser,
     unauthorized,
+    updateProduct,
     viewProductDetailsById,
     viewsProducts
 }
