@@ -1,4 +1,4 @@
-import {productsService} from '../manager/index.js';
+import {productsService} from '../services/services.js';
 
 const getAll = async(req,res) =>{
     const limit = parseInt(req.query.limit) || 10;

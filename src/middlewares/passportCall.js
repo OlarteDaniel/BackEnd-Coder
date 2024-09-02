@@ -10,7 +10,7 @@ export const passportCall = (strategy) =>{
                 if(info.message == "No auth token"){
                     return next();
                 }else{
-                    return res.sendUnauthorized("unauthorized" );
+                    return res.sendUnauthorized(info.message );
                 }
             }
 

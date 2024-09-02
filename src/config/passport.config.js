@@ -2,7 +2,8 @@ import passport from "passport";
 import {Strategy as LocalStrategy} from 'passport-local';
 import {ExtractJwt, Strategy as JWTStrategy} from 'passport-jwt';
 
-import { usersService,cartsService } from "../manager/index.js";
+import {usersService, cartsService} from '../services/services.js'
+
 import AuthService from "../services/AuthService.js";
 import config from "./config.js";
 
@@ -29,7 +30,7 @@ const initializePassportConfig = () =>{
         }
 
         const resultCart = await cartsService.createCart(newCart);
-
+        
         const newUser = {
             first_name,
             last_name,

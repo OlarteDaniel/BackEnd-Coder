@@ -1,4 +1,4 @@
-import {productsService,cartsService,usersService} from '../manager/index.js';
+import {productsService,cartsService,usersService} from '../services/services.js';
 
 const getAll = async(req,res)=>{
     const carts = await cartsService.getCarts();

@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 import config from "../config/config.js";
+import UserDTOSession from '../dto/user/UserDTOSession.js';
 
 const register  = (req,res)=>{
     res.sendSuccess('Registered');    
@@ -8,11 +9,10 @@ const register  = (req,res)=>{
 
 const login = (req,res)=>{
         
-    const sessionUser = {
-        name: `${req.user.first_name} ${req.user.last_name}`,
-        role: req.user.roles,
-        id: req.user._id
-    }
+
+    const sessionUserObject = new UserDTOSession(req.user);
+    const sessionUser = {...sessionUserObject};
+    
 
     const token = jwt.sign(sessionUser,config.auth.jwt.SECRET,{expiresIn:'1d'});
 

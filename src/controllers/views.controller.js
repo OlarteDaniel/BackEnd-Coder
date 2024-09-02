@@ -1,4 +1,7 @@
-import { productsService,usersService,cartsService } from "../manager/index.js";
+import ProductDTODetails from "../dto/product/ProductDTODetails.js";
+import productDTOUpdate from "../dto/product/ProductDTOUpdate.js";
+import ProductDTOWiew from "../dto/product/ProductDTOView.js";
+import { productsService,usersService,cartsService } from "../services/services.js";
 
 const home = (req,res)=>{
     if(!req.user){
@@ -25,11 +28,7 @@ const viewsProducts = async (req, res)=>{
         
     const productsResponse  = await productsService.getProducts();
 
-    const products = productsResponse.docs.map(product => ({
-        id: product._id,
-        title: product.title,
-        thumbnails: product.thumbnails
-    }));
+    const products = productsResponse.docs.map(product => new ProductDTOWiew(product));
 
     res.render('Products',{
         title:"Productos",
@@ -42,15 +41,7 @@ const viewProductDetailsById = async(req,res)=>{
     const pid = req.params.id;
     const productResponse = await productsService.getProductsById(pid);
 
-    const product = {
-        id: pid,
-        title: productResponse.title,
-        description:productResponse.description,
-        code:productResponse.code,
-        price:productResponse.price,
-        stock:productResponse.stock,
-        thumbnails: productResponse.thumbnails
-    };
+    const product = new ProductDTODetails(productResponse);
 
     res.render('ProductDetails',{
         title:"Detalles de producto",
@@ -93,8 +84,6 @@ const cart = async (req,res) =>{
     const user = await usersService.getUserById(uid)
     const cart = await cartsService.getCartsById(user.cart)
 
-    
-
     const plainCart = JSON.parse(JSON.stringify(cart));
 
     const total = plainCart.products.reduce((accumulator, item) => {
@@ -115,13 +104,7 @@ const updateProduct = async(req,res)=>{
     const {pid} = req.params;
     const productResponse = await productsService.getProductsById(pid);
 
-    const product = {
-        id: pid,
-        title: productResponse.title,
-        description:productResponse.description,
-        price:productResponse.price,
-        stock:productResponse.stock,
-    };
+    const product = new productDTOUpdate(productResponse);
 
     res.render('UpdateProduct',{
         title:'Modificar Productos',

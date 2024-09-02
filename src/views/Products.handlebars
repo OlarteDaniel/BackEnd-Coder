@@ -27,7 +27,9 @@
     {{else}}
         <div class="no-products">
             <p class="no-products-message">No hay productos disponibles</p>
-            <a href="/register/products" class="add-products-link">Agregar Productos</a>
+            {{#if (eq user.role 'admin')}}
+                <a href="/register/products" class="add-products-link">Agregar Productos</a>
+            {{/if}}
         </div>
     {{/if}}
 </div>
