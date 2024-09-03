@@ -57,9 +57,15 @@ async function finalizePurchase(cid) {
         const result = await response.json()
 
         if (result.status === 'success') {
-            window.location.reload();
+            Swal.fire({
+                title: result.message,
+                text: `Codigo de compra: ${result.payload.code}`,
+                icon: "info",
+                confirmButtonText: "OK"  
+            }).then(() => {
+                window.location.reload(); 
+            });            
         } else {
-            console.log(result)
             Swal.fire({
                 icon: "error",
                 title: "Oops...",

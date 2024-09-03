@@ -19,8 +19,16 @@ loginForm.addEventListener('submit',async evt =>{
             }
         })
     
+        const resul = await response.json();
+
         if(response.ok == true){
             window.location.href = '/';
+        }else{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: resul.error
+            });
         }
     } catch (error) {
         console.log(error)

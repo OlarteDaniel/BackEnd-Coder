@@ -194,7 +194,7 @@ const finalizePurchase = async(req,res)=>{
 
     //---------------OPERACIONES---------------
 
-    return res.sendSuccess('Ticket created');
+    return res.sendSuccessWithPayload(newTicket,'Ticket created');
 }
 
 export default {

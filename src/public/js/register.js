@@ -19,8 +19,17 @@ registerForm.addEventListener('submit',async evt =>{
                 'Content-Type':'application/json'
             }
         });
+
+        const result = await response.json();
+
         if(response.ok == true){
             window.location.href = '/login';
+        }else{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: result.error,
+            });
         }
     } catch (error) {
         console.log(error);
