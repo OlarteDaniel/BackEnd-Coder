@@ -45,4 +45,4 @@ En serio, le estoy muy agradecido por todo lo que nos enseñó. Le juro que, en 
 Es una pena que ya no nos acompañe en la cursada, porque fue el mejor profesor que tuve en toda mi carrera en CODERHOUSE. Pero a veces las cosas suceden por alguna razón. Le deseo lo mejor en todos sus objetivos y, nuevamente, MUCHAS GRACIAS POR TODO. LE ESTOY MUY AGRADECIDO, QUE VIVA EL BACKEND!!!.
 ---
 
-¡Gracias por revisar mi proyecto!
+¡Gracias por ser mi profesor!
