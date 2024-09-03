@@ -23,7 +23,14 @@ class CartsRouter extends BaseRouter{
         
         // METODO POST POR CARRITO 
         
-        
+
+        // METODO FINALIZAR CARRITO 
+
+        this.post('/:cid/purchase',['USER'],cartsController.finalizePurchase);
+
+        // METODO FINALIZAR CARRITO 
+
+
         // METODO PUT POR CARRITO
         
         this.put('/:id',['USER'],cartsController.updatedCart);

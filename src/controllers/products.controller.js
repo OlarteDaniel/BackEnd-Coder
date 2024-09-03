@@ -104,6 +104,7 @@ const updateProduct = async(req,res)=>{
         description: data.description,
         price: data.price,
         stock: data.stock,
+        status: data.status
     }
 
     const result = await productsService.updateProduct(pid,updateProduct);

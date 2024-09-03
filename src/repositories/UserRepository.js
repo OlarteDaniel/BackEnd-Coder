@@ -7,7 +7,7 @@ export default class UserRepository{
     getUsers(){
         return this.dao.get()
     }
-
+    
     getUserById(id){
         return this.dao.getOne({_id:id})
     }

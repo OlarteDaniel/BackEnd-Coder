@@ -2,7 +2,7 @@ import usersModel from "./models/user.model.js";
 
 export default class UserDAO {
 
-    async getUsers(){
+    async get(){
         return usersModel.find();
     }
 

@@ -29,7 +29,7 @@ export default class BaseRouter {
     put(path,policies,...callbacks){
         if(!policies || !Array.isArray(policies)) throw new Error('Policies required for endpoint' + path);
         this.router.put(path,this.generateCustomResponses,passportCall('current'),executePolicies(policies),this.applyCallbacks(callbacks));
-    }
+    }   
 
     delete(path,policies,...callbacks){
         if(!policies || !Array.isArray(policies)) throw new Error('Policies required for endpoint' + path);

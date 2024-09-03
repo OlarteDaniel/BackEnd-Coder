@@ -5,23 +5,25 @@
     {{#if products.length}}
         <div class="productos">
             {{#each products}}
-                <div class="producto">
-                    <h2 class="titulo">{{this.title}}</h2>
+                {{#if this.status}} 
+                    <div class="producto">
+                        <h2 class="titulo">{{this.title}}</h2>
+                        {{this.status}}
+                        {{#if this.thumbnails.length}}
+                            {{#each this.thumbnails}}
+                                {{#if main}}
+                                    <img src="{{this.path}}" alt="{{../title}}" class="product-image">
+                                {{/if}}
+                            {{/each}}
+                        {{else}}
+                            <img src="/upload/products/ImagenDefault.jpg" alt="Imagen por defecto" class="product-image">
+                        {{/if}}
 
-                    {{#if this.thumbnails.length}}
-                        {{#each this.thumbnails}}
-                            {{#if main}}
-                                <img src="{{this.path}}" alt="{{../title}}" class="product-image">
-                            {{/if}}
-                        {{/each}}
-                    {{else}}
-                        <img src="/upload/products/ImagenDefault.jpg" alt="Imagen por defecto" class="product-image">
-                    {{/if}}
-
-                    <a href="/products/details/{{this.id}}" class="button-link">
-                        <button class="view-button">Ver más</button>
-                    </a>
-                </div>
+                        <a href="/products/details/{{this.id}}" class="button-link">
+                            <button class="view-button">Ver más</button>
+                        </a>
+                    </div>
+                {{/if}}
             {{/each}}
         </div>
     {{else}}

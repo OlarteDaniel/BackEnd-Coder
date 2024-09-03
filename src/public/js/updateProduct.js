@@ -12,6 +12,8 @@ updateForm.addEventListener('submit', async evt=>{
         obj[key] = value;
     });
 
+    console.log(JSON.stringify(obj))
+
     try {
         const response = await fetch(`/api/products/${pid}`,{
             method:'PUT',

@@ -2,7 +2,7 @@
 <div class="product-edit-container">
     <h1 class="title">Modificar Producto</h1>
     
-    <form id="updateForm" class="product-edit-form" >
+    <form id="updateForm" class="product-edit-form">
 
         <input type="hidden" name="productId" id="productId" value='{{product.id}}'>
 
@@ -13,7 +13,7 @@
         
         <div class="form-group">
             <label for="product-description">Descripción:</label>
-            <textarea id="product-description" name="description" placeholder="Ingrese la descripción del producto"required>{{product.description}}</textarea>
+            <textarea id="product-description" name="description" placeholder="Ingrese la descripción del producto" required>{{product.description}}</textarea>
         </div>
         
         <div class="form-group">
@@ -24,6 +24,15 @@
         <div class="form-group">
             <label for="product-stock">Stock:</label>
             <input type="number" value='{{product.stock}}' id="product-stock" name="stock" placeholder="Ingrese la cantidad en stock" min="0" required>
+        </div>
+
+        <!-- Nuevo campo para cambiar el status del producto -->
+        <div class="form-group">
+            <label for="product-status">Estado del Producto:</label>
+            <select id="product-status" name="status" required>
+                <option value="true" {{#if product.status}}selected{{/if}}>Disponible</option>
+                <option value="false" {{#unless product.status}}selected{{/unless}}>No Disponible</option>
+            </select>
         </div>
         
         <div class="form-buttons">

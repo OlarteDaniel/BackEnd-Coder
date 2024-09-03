@@ -1,6 +1,7 @@
 import ProductDTODetails from "../dto/product/ProductDTODetails.js";
 import productDTOUpdate from "../dto/product/ProductDTOUpdate.js";
 import ProductDTOWiew from "../dto/product/ProductDTOView.js";
+import UserDTOCurrent from "../dto/user/UserDTOCurrent.js";
 import { productsService,usersService,cartsService } from "../services/services.js";
 
 const home = (req,res)=>{
@@ -29,6 +30,13 @@ const viewsProducts = async (req, res)=>{
     const productsResponse  = await productsService.getProducts();
 
     const products = productsResponse.docs.map(product => new ProductDTOWiew(product));
+
+    products.forEach(prod =>{
+        if(prod.stock === 0 ){
+            prod.status = false
+        }
+    })
+
 
     res.render('Products',{
         title:"Productos",
@@ -71,10 +79,13 @@ const profile = (req,res) =>{
         return res.redirect('/login');
     }
 
+    const currentUserObject = new UserDTOCurrent(req.user);
+    const currentUser = {...currentUserObject};
+
     res.render('Profile',{
         title:"Perfil de usuario",
         css:'profile',
-        user:req.user
+        user:currentUser
     })
 
 }

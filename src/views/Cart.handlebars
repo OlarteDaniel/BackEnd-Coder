@@ -38,7 +38,7 @@
     </div>
 
     <!-- Botón para proceder al pago -->
-    <button class="checkout-button" onclick="proceedToCheckout()">Proceder al Pago</button>
+    <button class="checkout-button" onclick="proceedToCheckout('{{cart._id}}')">Proceder al Pago</button>
 
     {{else}}
     <!-- Mensaje cuando el carrito está vacío -->
